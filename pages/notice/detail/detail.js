@@ -4,8 +4,11 @@ const downLoadUrl = getApp().globalData.apiRootUrl+"api/files/download/";
 var thisPage;
 var notice;
 Page({
+	data:{
+		downLoadUrl:downLoadUrl
+	},
 	loadData: function (pageNum) {
-		thisPage.setData({notice:notice,downLoadUrl:downLoadUrl});
+		thisPage.setData({notice:notice});
 		initFiles();
 		function initFiles(){
 			util.easyRequest('api/files/find',

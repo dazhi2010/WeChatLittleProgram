@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/notice/list",
-    "pages/notice/detail/detail"
+    "pages/notice/detail/detail",
+    "pages/map/index"
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -25,6 +26,11 @@
       {
         "pagePath": "pages/notice/list",
         "text": "通知"
+      },
+      {
+        "pagePath": "pages/map/index",
+        "text": "地图",
+        "iconPath":"images/location.png"
       }
     ]
   }

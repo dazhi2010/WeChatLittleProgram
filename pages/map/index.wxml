@@ -1,0 +1,15 @@
+<view class="page-body">
+    <map id="map" longitude="117.015" latitude="36.666" scale="14" controls="{{controls}}"
+         bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}"
+         bindregionchange="regionchange" show-location style="width: 100%; height: 450px;">
+        <cover-view class="coverview">
+            <!-- <cover-image class='coverviewimage' src="{{iconPath}}"/> -->
+            <cover-view class='coverviewnname'  data-imgh='{{img2}}' data-wanggeyuana='{{wanggeyuan1}}' data-tela='{{tel1}}'data-wanggeyuanb='{{wanggeyuan2}}' data-telb='{{tel2}}'data-wanggeminjing='{{wanggeminjing}}' data-telc='{{tel3}}' data-wangge='{{wangge}}' data-zhize='{{zhize}}' data-name='{{name}}' bindtap='clickdetails'>{{selectedPeople.uName}}</cover-view>
+            <cover-view class='look'>点击网格查看详情</cover-view>
+            <cover-image class='daohang' data-longitude='{{selectedPeople.X}}' data-latitude='{{selectedPeople.Y}}'
+                         data-name='{{selectedPeople.uName}}' bindtap='clickdaohang' src="/images/mapp.png" />
+
+        </cover-view>
+    </map>
+
+</view>
