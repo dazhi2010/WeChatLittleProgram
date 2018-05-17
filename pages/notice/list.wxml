@@ -1,0 +1,26 @@
+<wxs module="common" src="./../../utils/common.wxs"></wxs>
+<view class="message_list">
+    <block wx:for="{{list}}" wx:key="unique">
+        <view bindtap="tapNotice" data-data="{{item}}">
+            <view class="item" >
+                <view class="item-left">
+                    <image src="../../images/welcome.png" class="image"/>
+                </view>
+                <view class="item-middle">
+                    <view>
+                        <text class="title">{{item.titlee}}</text>
+                    </view>
+                    <view>
+                        <text class="message">{{item.$$sendUser.name}}</text>
+                    </view>
+                </view>
+                <view class="item_right">
+                    <view><text class="time">{{common.formatTime(item.createTime)}}</text></view>
+                    <view class="mark mark-red" wx:if="{{item.receiveType=='jieshouren'}}"><text class="text">{{common.noticeTypes[item.receiveType]}}</text></view>
+                    <view class="mark mark-blue" wx:if="{{item.receiveType=='shenyue'}}"><text class="text">{{common.noticeTypes[item.receiveType]}}</text></view>
+                </view>
+            </view>
+            <view  class="line"></view>
+        </view>
+    </block>
+</view>
