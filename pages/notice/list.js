@@ -38,8 +38,8 @@ Page({
 			thisPage.loadData(thisPage.data.pageNum);
 		}
 	},
-	tapNotice: function (noticeData) {
-		util.share.put("selectedNoticeData",noticeData.currentTarget.dataset.data);
+	tapNotice: function (event) {
+		util.share.put("selectedNoticeData",event.currentTarget.dataset.data);
 		wx.navigateTo({
 			url: 'detail/detail'
 		})

@@ -12,10 +12,9 @@
                     <view class="weui-article__p">
                         {{notice.contents}}
                     </view>
-                    <!--<view class="weui-article__p">-->
-                        <!--<image class="weui-article__img" src="../images/pic_article.png" mode="aspectFit" style="height: 180px" />-->
-                        <!--<image class="weui-article__img" src="../images/pic_article.png" mode="aspectFit" style="height: 180px" />-->
-                    <!--</view>-->
+                    <view class="weui-article__p">
+                        <image wx:for="{{notice.$$files}}" wx:key="unique" class="weui-article__img" src="{{downLoadUrl+item.id}}" mode="aspectFit" style="height: 180px" bindtap="previewImg" data-data="{{item}}">{{item.fileName}}</image>
+                    </view>
                 </view>
             </view>
         </view>
