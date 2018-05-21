@@ -43,5 +43,10 @@ Page({
 		wx.navigateTo({
 			url: 'detail/detail'
 		})
+	},
+	addNotice:function (event) {
+		wx.navigateTo({
+			url: 'edit/edit'
+		})
 	}
 })

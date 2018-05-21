@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/notice/list",
     "pages/notice/detail/detail",
-    "pages/map/index"
+    "pages/map/index",
+    "pages/notice/edit/edit"
   ],
   "window":{
     "backgroundTextStyle":"dark",

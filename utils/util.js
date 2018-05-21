@@ -15,16 +15,18 @@ const formatNumber = n => {
 }
 const thisApp = getApp();
 const apiRootUrl = thisApp.globalData.apiRootUrl;
-
-function easyRequest(url, data, onSuccessFunc, onFailFunc, onCompleteFunc) {
+const requestTypeMap = {'json':'application/json;charset=UTF-8','form':'application/x-www-form-urlencoded;charset=UTF-8'};
+//普通请求发送
+function easyRequest(url, data, onSuccessFunc, onFailFunc, onCompleteFunc,requestType) {
+	requestType = requestType?requestType:'json';
 	wx.showNavigationBarLoading();
 	wx.request({
 		dataType: 'json',
-		data: data,
+		data: requestType=='json'?data:{'JSON_REQUEST_BODY': JSON.stringify(data)},
 		method: 'POST',
 		url: apiRootUrl + url,
 		header: {
-			'content-type': 'application/json;charset=UTF-8',
+			'content-type': requestTypeMap[requestType],
 			'Accept': 'application/json, text/plain, */*',
 			'x-skywares-safety-token': '!skywares-safety--#eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlck5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwiZXhwaXJlIjoxNTI5MDMzMzMxMTMyLCJhZGRpdGlvbmFsIjoie1wiZXh0ZW5kMlwiOlwiODMwRkUzREZEQUYxODVBMzk4MTBGMkM2MkVFOUIzMURcIixcImV4dGVuZDFcIjpcIkE1OTYwNTJDMUQxQUMzNUFDOUZCRjIzMDdGOUVEMkYwMjJcIixcInVzZXJUeXBlXCI6XCIzXCJ9In0.hXwMDTMorAkAm_727Rvac19WqAdk1guAOd1pM6sUsZA'
 		},
@@ -40,14 +42,49 @@ function easyRequest(url, data, onSuccessFunc, onFailFunc, onCompleteFunc) {
 				}
 			}
 		},
-		fail: onFailFunc ? onFailFunc : function (res) {
+		fail: onFailFunc ? onFailFunc : null,
+		complete: onCompleteFunc ? onCompleteFunc : function (res) {
 			wx.hideNavigationBarLoading();
 			wx.hideLoading();
-		},
-		complete: onCompleteFunc ? onCompleteFunc : null
+		}
 	})
 }
-
+//带文件form表单上传
+function easyUpload(url, data,fileField,filePath, onSuccessFunc, onFailFunc, onCompleteFunc) {
+	wx.showNavigationBarLoading();
+	const uploadTask = wx.uploadFile({
+		url: apiRootUrl + url,
+		filePath: filePath,
+		name: fileField,
+		method: 'POST',
+		header: {
+			'content-type': 'multipart/form-data;charset=UTF-8',
+			'Accept': 'application/json, text/plain, */*',
+			'x-skywares-safety-token': '!skywares-safety--#eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlck5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwiZXhwaXJlIjoxNTI5MDMzMzMxMTMyLCJhZGRpdGlvbmFsIjoie1wiZXh0ZW5kMlwiOlwiODMwRkUzREZEQUYxODVBMzk4MTBGMkM2MkVFOUIzMURcIixcImV4dGVuZDFcIjpcIkE1OTYwNTJDMUQxQUMzNUFDOUZCRjIzMDdGOUVEMkYwMjJcIixcInVzZXJUeXBlXCI6XCIzXCJ9In0.hXwMDTMorAkAm_727Rvac19WqAdk1guAOd1pM6sUsZA'
+		},
+		formData:{
+			'JSON_REQUEST_BODY': JSON.stringify(data)
+		},
+		success: function (res) {
+			res.data = JSON.parse(res.data);
+			if (res.data.code == 200) {
+				if (onSuccessFunc) {
+					onSuccessFunc(res.data);
+				}
+			} else {
+				if (onFailFunc) {
+					onFailFunc();
+				}
+			}
+		},
+		fail: onFailFunc ? onFailFunc : null,
+		complete: onCompleteFunc ? onCompleteFunc : function (res) {
+			wx.hideNavigationBarLoading();
+			wx.hideLoading();
+		}
+	});
+	return uploadTask;
+}
 function uniqueArray(arr) {//数组去重
 	var result = [], hash = {};
 	for (var i = 0, elem; (elem = arr[i]) != null; i++) {
@@ -75,6 +112,7 @@ function removeShare(key){
 module.exports = {
 	formatTime: formatTime,
 	easyRequest: easyRequest,
+	easyUpload:easyUpload,
 	uniqueArray: uniqueArray,
 	share:{
 		put:putShare,
