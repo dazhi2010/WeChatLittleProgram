@@ -59,6 +59,10 @@
                                 <view class="weui-uploader__input-box">
                                     <view class="weui-uploader__input" bindtap="chooseImage"></view>
                                 </view>
+                                <video src="{{src}}"></video>
+                                <view class="weui-uploader__input-box">
+                                    <view class="weui-uploader__input" bindtap="chooseVideo"></view>
+                                </view>
                             </view>
                         </view>
                     </view>

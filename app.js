@@ -36,7 +36,7 @@ App({
 	globalData: {
 		userInfo: null,
 	  	shareData:{},
-		apiRootUrl: 'http://localhost:8280/Backend/'
-		// apiRootUrl: 'http://222.175.112.106:8086/Backend/'
+		// apiRootUrl: 'http://localhost:8280/Backend/'
+		apiRootUrl: 'http://222.175.112.106:8086/Backend/'
 	}
 })

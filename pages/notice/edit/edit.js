@@ -23,6 +23,19 @@ Page({
 			}
 		})
 	},
+	chooseVideo:function(e){
+		var that = this
+		wx.chooseVideo({
+			sourceType: ['album','camera'],
+			maxDuration: 60,
+			camera: 'back',
+			success: function(res) {
+				that.setData({
+					src: res.tempFilePath
+				})
+			}
+		})
+	},
 	previewImg : function(e){
 		wx.previewImage({
 			current: e.currentTarget.id, // 当前显示图片的http链接
