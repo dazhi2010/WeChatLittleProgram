@@ -1,0 +1,4 @@
+<view>
+    p2------{{p2name}}
+    <button bindtap="p2tap" class="p2-btn">p2</button>
+</view>

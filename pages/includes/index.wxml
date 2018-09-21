@@ -1,0 +1,22 @@
+<scroll-view>
+    <view class="swiper-tab">
+        <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">1111</view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">2222</view>
+        <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">3333</view>
+    </view>
+</scroll-view>
+<swiper current="{{currentTab}} " class="swiper-box " duration="300 " style="height:{{winHeight - 31}}px "
+        bindchange="bindChange">
+    <!-- 我是哈哈 -->
+    <swiper-item>
+        <include src="./subpages/p1.wxml"/>
+    </swiper-item>
+    <!-- 我是呵呵 -->
+    <swiper-item>
+        <include src="./subpages/p2.wxml"/>
+    </swiper-item>
+    <!-- 我是嘿嘿 -->
+    <swiper-item>
+        <view>33333</view>
+    </swiper-item>
+</swiper>

@@ -1,0 +1,29 @@
+@import "./subpages/p1.wxss";
+@import "./subpages/p2.wxss";
+.swiper-tab {
+    text-align: center;
+    line-height: 80 rpx;
+}
+
+.swiper-tab-list {
+    font-size: 30 rpx;
+    display: inline-block;
+    width: 20%;
+    color: #777777;
+}
+
+.on {
+    color: #da7c0c;
+    border-bottom: 5 rpx solid #da7c0c;
+}
+
+.swiper-box {
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.swiper-box view {
+    text-align: center;
+} 

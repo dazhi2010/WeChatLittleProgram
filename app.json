@@ -1,11 +1,13 @@
 {
   "pages":[
+    "pages/includes/index",
     "pages/index/index",
     "pages/logs/logs",
     "pages/notice/list",
     "pages/notice/detail/detail",
     "pages/map/index",
     "pages/notice/edit/edit"
+
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -31,6 +33,11 @@
       {
         "pagePath": "pages/map/index",
         "text": "地图",
+        "iconPath":"images/location.png"
+      },
+      {
+        "pagePath": "pages/includes/index",
+        "text": "页面引用",
         "iconPath":"images/location.png"
       }
     ]
